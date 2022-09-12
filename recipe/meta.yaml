@@ -6,8 +6,9 @@ package:
   version: "{{ version }}"
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 7d2c7f30a57ef494c5683270587ba7593318746c6e22b9b8953e288c9c303c65
+  # Needs to be github - pypi does not contain the LICENSE file
+  url: "https://github.com/alexferl/distconfig/archive/refs/tags/v{{ version }}.tar.gz"
+  sha256: a7fde663e3766321ee2ab7d5663a302b9db5de4bfa317da09dd636b10c21dcdc
 
 build:
   number: 0
