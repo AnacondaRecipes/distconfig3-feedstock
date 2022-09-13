@@ -37,7 +37,7 @@ test:
     - distconfig.tests.unit
 
 about:
-  home: http://github.com/alexferl/distconfig/
+  home: https://github.com/alexferl/distconfig/
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
