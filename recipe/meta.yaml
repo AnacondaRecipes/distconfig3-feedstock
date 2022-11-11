@@ -1,0 +1,51 @@
+{% set name = "distconfig3" %}
+{% set version = "1.0.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  # Needs to be github - pypi does not contain the LICENSE file
+  url: "https://github.com/alexferl/distconfig/archive/refs/tags/v{{ version }}.tar.gz"
+  sha256: a7fde663e3766321ee2ab7d5663a302b9db5de4bfa317da09dd636b10c21dcdc
+
+build:
+  number: 0
+  skip: True  # [py<37]
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+    - wheel
+  run:
+    - python
+
+test:
+  requires:
+    - pip
+  commands:
+    - pip check
+  imports:
+    - distconfig
+    - distconfig.backends
+    - distconfig.tests
+    - distconfig.tests.integration
+    - distconfig.tests.unit
+
+about:
+  home: https://github.com/alexferl/distconfig/
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  license_url: https://github.com/alexferl/distconfig/blob/master/LICENSE
+  summary: "Library to manage configuration using Zookeeper, Etcd, Consul"
+  doc_url: https://github.com/alexferl/distconfig/
+  dev_url: https://github.com/alexferl/distconfig/
+
+extra:
+  recipe-maintainers:
+    - marcoesters
